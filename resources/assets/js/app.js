@@ -15,6 +15,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('dl-sidebar', require('./components/partials/sidebar.vue'));
 Vue.component('dl-sidebar-toggle', require('./components/partials/SidebarToggle.vue'));
 
 const app = new Vue({
