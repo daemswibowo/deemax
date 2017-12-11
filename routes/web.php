@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+if ( ! request()->ajax() ) {
+Route::get('/dashboard/{vue?}', 'DashboardController@index')->where('vue', '[\/\w\.-]*');
+
+}

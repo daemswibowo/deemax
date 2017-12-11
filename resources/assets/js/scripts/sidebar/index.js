@@ -59,6 +59,12 @@ export default (function () {
     $('.sidebar-toggle').on('click', e => {
       // $('.app').removeClass('is-collapsed');
       $('.app').toggleClass('is-collapsed');
+
+      if (localStorage.getItem('sidebar-collapsed') === null || localStorage.getItem('sidebar-collapsed')==0) {
+        localStorage.setItem('sidebar-collapsed', 1);
+      } else {
+        localStorage.setItem('sidebar-collapsed', 0);
+      }
       // e.preventDefault();
     });
 
