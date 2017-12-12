@@ -10,6 +10,13 @@
 
     <title>Deemax</title>
     <!-- Styles -->
+    <style>
+      .pace {
+        z-index: 9999999 !important;
+      }
+    </style>
+    <link href="{{ asset('assets/bower_components/PACE/themes/blue/pace-theme-flash.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/bower_components/PACE/pace.min.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="app is-collapsed">

@@ -1,4 +1,3 @@
-
 <template>
 	<div class="sidebar">
 		<div class="sidebar-inner">
@@ -20,7 +19,7 @@
 					</div>
 					<div class="peer">
 						<div class="mobile-toggle sidebar-toggle">
-							<a href="" class="td-n">
+							<a href="javascript:void(0)" class="td-n">
 								<i class="ti-arrow-circle-left"></i>
 							</a>
 						</div>
