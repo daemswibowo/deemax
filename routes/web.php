@@ -26,6 +26,7 @@ Route::middleware(['auth'])->prefix('dashboard/api')->group(function () {
 	});
 	Route::prefix('management')->group(function () {
 		Route::resource('permission', 'Api\\PermissionController', ['except'=>['create','edit']]);
+		Route::resource('role', 'Api\\RoleController', ['except'=>['create','edit']]);
 	});
 });
 

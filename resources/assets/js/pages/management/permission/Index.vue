@@ -31,7 +31,6 @@
 									<table class="table table-striped" style="margin-bottom:10">
 										<thead>
 											<tr>
-												<th width="1"><input type="checkbox" name="" id=""></th>
 												<th>No</th>
 												<th>Name</th>
 												<th>Created At</th>
@@ -40,7 +39,6 @@
 										</thead>
 										<tbody>
 											<tr v-for="(item, key) in items.data" :index="key">
-												<td><input type="checkbox" name="item[]" id=""></td>
 												<td>{{ key+1 }} </td>
 												<td>{{ item.name }} </td>
 												<td>{{ date("DD/MM/YYYY", item.created_at) }} </td>
@@ -114,12 +112,13 @@
 export default {
 	head: {
 		title: {
-			inner: 'Home',
+			inner: 'Permission',
 			separator: '-'
 		}
 	},
 	data () {
 		return {
+			url: '/dashboard/api/management/permission',
 			error: '',
 			perPage: 10,
 			loadings: {
@@ -155,7 +154,7 @@ export default {
 			if (paging) {
 				page = '&page='+paging;
 			}
-			axios.get('/dashboard/api/management/permission?search='+this.search+'&row='+this.perPage+page)
+			axios.get(this.url+'?search='+this.search+'&row='+this.perPage+page)
 			.then(response => {
 				this.items = response.data;
 				this.loadings.items = false;
@@ -177,6 +176,8 @@ export default {
 		},
 
 		create () {
+			this.modal.title = 'Create';
+			this.modal.icon = 'ti-plus';
 			this.modal.action = 'create';
 			this.form.name = '';
 			this.form.errors = [];
@@ -184,6 +185,8 @@ export default {
 		},
 
 		edit (data) {
+			this.modal.title = 'Edit';
+			this.modal.icon = 'ti-pencil';
 			this.modal.action = 'edit';
 			this.form.id = data.id;
 			this.form.name = data.name;
@@ -202,7 +205,7 @@ export default {
 				confirmButtonText: 'Yes, delete it!'
 			}).then((result) => {
 				if (result.value) {
-					axios.delete('/dashboard/api/management/permission/'+id)
+					axios.delete(this.url+'/'+id)
 					.then(response => {
 						this.index();
 						toastr.success('Data has been deleted!', 'Success!', {
@@ -217,9 +220,9 @@ export default {
 
 		submit () {
 			if (this.modal.action=='create') {
-				this.request('post','/dashboard/api/management/permission',this.form, '#modal');
+				this.request('post',this.url+'',this.form, '#modal');
 			} else {
-				this.request('put','/dashboard/api/management/permission/'+this.form.id,this.form, '#modal');
+				this.request('put',this.url+'/'+this.form.id,this.form, '#modal');
 			}
 		},
 

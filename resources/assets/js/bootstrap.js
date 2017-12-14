@@ -15,6 +15,8 @@ try {
     window.toastr = require('toastr');
     require('bootstrap');
     require('./scripts');
+
+    $('.select2').select2();
 } catch (e) {}
 
 /**

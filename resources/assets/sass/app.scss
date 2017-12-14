@@ -16,6 +16,8 @@
 @import "~spinkit/scss/spinkit";
 @import '~sweetalert2/src/sweetalert2';
 @import '~toastr/toastr';
+@import '~select2/dist/css/select2.min';
+
 #loader {
 	transition: all 0.3s ease-in-out;
 	opacity: 1;

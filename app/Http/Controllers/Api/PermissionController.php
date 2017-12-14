@@ -24,6 +24,10 @@ class PermissionController extends Controller
             $row = $request->row;
         }
         
+        if ($request->no_pagging) {
+            return Permission::pluck('name');
+        }
+
         if ($request->search) {
             $search = $request->search;
             $permission = Permission::where(function ($q) use ($search) {

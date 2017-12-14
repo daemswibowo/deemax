@@ -6,6 +6,7 @@ import Notfound from './components/Notfound.vue';
 
 import Management from './pages/management';
 import Permission from './pages/management/permission';
+import Role from './pages/management/role';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -31,6 +32,11 @@ export default new VueRouter({
 					path: 'permission',
 					component: Permission,
 					name: 'permission'
+				},
+				{
+					path: 'role',
+					component: Role,
+					name: 'role'
 				}
 			]
 		},
