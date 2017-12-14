@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
 		$role_superadmin = Role::create(['name' => 'Super Admin']);
 		$perm_role = Permission::create(['name' => 'Manage Role']);
 		$perm_permission = Permission::create(['name' => 'Manage Permission']);
+		$perm_menu = Permission::create(['name' => 'Manage Menu']);
 
 		$role_superadmin->givePermissionTo(['Manage Role','Manage Permission']);
 

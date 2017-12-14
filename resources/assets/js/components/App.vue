@@ -34,27 +34,44 @@ export default {
 	},
 	data () {
 		return {
+			userdata: [],
 			menus: [
 				{
 					title: 'Home',
 					icon: 'ti-home',
-					to: 'home',
+					to: {name:'home'},
 					externalLink: 0,
 					menus: []
 				},
 				{
-					title: 'Example',
-					icon: 'ti-layout-list-thumb',
-					to: 'example',
+					title: 'Management',
+					icon: 'ti-briefcase',
+					to: '',
 					externalLink: 0,
-					menus: []
+					menus: [
+						{
+							title: 'Permission',
+							icon: null,
+							to: {name:'permission'},
+							externalLink: 0,
+							menus: []
+						}
+					]
 				}
 			]
 		}
 	},
 
 	mounted () {
-		
+		axios.get('/dashboard/api/user.json')
+		.then(
+			success => {
+				this.userdata = success.data;
+			}, 
+			error => {
+				console.log(error);
+			}
+		)
 	}
 }
 </script>

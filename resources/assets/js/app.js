@@ -1,13 +1,11 @@
 require('./bootstrap');
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import VueHead from 'vue-head'
 import BootstrapVue from 'bootstrap-vue'
-
 import App from './components/App.vue';
-import Example from './components/Example.vue';
-import Home from './pages/home/Home.vue';
-
+import Notfound from './components/Notfound.vue';
+import router from './router';
+import Paginate from 'vuejs-paginate'
 if (localStorage.getItem('sidebar-collapsed') == 1) {
 	$('.app').addClass('is-collapsed');
 } else {
@@ -15,32 +13,34 @@ if (localStorage.getItem('sidebar-collapsed') == 1) {
 }
 
 Vue.use(BootstrapVue);  
-Vue.use(VueRouter);
 Vue.use(VueHead)
+Vue.component('paginate', Paginate)
 
 Vue.mixin({
-	data: function() {
-		return {
-			dimas: 'Aku anak sehat'
+	methods: {
+		can (permission) {
+			if (permission.constructor===Array) {
+				permission.forEach(a => {
+					console.log(a);
+				})
+			} else {
+				console.log('can is not array');
+			}
+		},
+
+		date (format, date='') {
+			return moment(date).format(format);
 		}
 	}
-})
-
-const router = new VueRouter({
-	mode: 'history',
-	linkActiveClass: 'active',
-	base: 'dashboard',
-	routes: [
-		{ path: '/', redirect: 'home' },
-		{ path: '/home', component: Home },
-		{ path: '/example', component: Example },
-	]
 });
 
+
+Vue.component('spinkit-three-bounce', require('./components/spinkit/ThreeBounce.vue'));
+Vue.component('Notfound', Notfound);
 const app = new Vue({
 	el: '#app',
 	components: {
 		App
 	},
-	router
+	router,
 });

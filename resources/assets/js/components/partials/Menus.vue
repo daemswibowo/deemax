@@ -2,7 +2,7 @@
 	<ul :class="ulClass">
 		<li v-for="m in menus" class="nav-item" :class="{'dropdown':m.menus.length>0}" router-link-active='active'>
 			<router-link v-if="!m.externalLink" :to="m.to" :class="{'dropdown-toggle':m.menus.length>0}">
-				<span class="icon-holder">
+				<span class="icon-holder" v-if="m.icon">
 					<i :class="m.icon"></i>
 				</span>
 				<span class="title">{{ m.title }}</span>

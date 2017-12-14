@@ -3,12 +3,19 @@
 // @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // // Variables
-// @import "variables";
 
 // // Bootstrap
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "./styles/index";
-
+@import 'styles/spec/settings/index';
+@import 'styles/spec/tools/index';
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+@import 'styles/spec/index';
+@import 'styles/vendor/index';
+@import "~animate.css/animate.min.css";
+@import "~spinkit/scss/spinkit";
+@import '~sweetalert2/src/sweetalert2';
+@import '~toastr/toastr';
 #loader {
 	transition: all 0.3s ease-in-out;
 	opacity: 1;
@@ -24,8 +31,6 @@
 	opacity: 0;
 	visibility: hidden;
 }
-
-
 
 .spinner {
 	width: 40px;

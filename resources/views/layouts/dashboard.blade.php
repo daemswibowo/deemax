@@ -33,10 +33,11 @@
         }, 300);
       });
     </script>
-
+  
     <!-- @App Content -->
     <!-- =================================================== -->
     <div id="app">
+      @yield('content')
       <App></App>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
